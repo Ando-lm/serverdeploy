@@ -23,6 +23,7 @@ nginxpm:
 # Gotify
 gotify:
 	docker volume create gotify_data
+	docker volume create igotifyapi_data
 	$(call docker_rebuild,"gotify","docker/gotify")
 rdpro:
 	docker create volume rdpro_data

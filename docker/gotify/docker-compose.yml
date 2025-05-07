@@ -1,6 +1,8 @@
 volumes:
   gotify_data:
     external: true
+  igotifyapi_data:
+    external: true
 
 networks:
   reverse-proxy:
@@ -12,9 +14,26 @@ services:
     container_name: gotify
     hostname: gotify
     restart: unless-stopped
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
     volumes:
       - gotify_data:/app/data
     networks:
       - reverse-proxy
+  
+  igotify:
+    container_name: igotify
+    hostname: igotify
+    image: ghcr.io/androidseb25/igotify-notification-assist:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    pull_policy: always
+    networks:
+      - reverse-proxy
+    ports:
+      - "8681:8080"
+    volumes:
+      - igotifyapi_data:/app/data
+    #environment:                 # option environment see above note
+    #  GOTIFY_URLS:          ''
+    #  GOTIFY_CLIENT_TOKENS: ''
+    #  SECNTFY_TOKENS:       ''
