@@ -1,3 +1,4 @@
+# Funzione Docker rebuild
 define docker_rebuild
 	docker compose -p $(1) -f $(2)/docker-compose.yml down && \
 	docker compose -p $(1) -f $(2)/docker-compose.yml rm -f && \
@@ -5,7 +6,7 @@ define docker_rebuild
 	docker compose -p $(1) -f $(2)/docker-compose.yml build --no-cache && \
 	docker compose -p $(1) -f $(2)/docker-compose.yml up -d
 endef
-
+ 
 init:
 	docker network create --driver bridge reverse-proxy
 
