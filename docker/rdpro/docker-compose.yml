@@ -1,0 +1,29 @@
+volumes:
+  gotify_data:
+    external: true
+
+networks:
+  reverse-proxy:
+    external: true
+
+services:
+  hbbs:
+    container_name: hbbs
+    image: docker.io/rustdesk/rustdesk-server-pro:latest
+    command: hbbs
+    volumes:
+      - rdpro_data:/root
+    #network_mode: "host"
+
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+
+  hbbr:
+    container_name: hbbr
+    image: docker.io/rustdesk/rustdesk-server-pro:latest
+    command: hbbr
+    volumes:
+      - rdpro_data:/root
+    #network_mode: "host"
+    restart: unless-stopped
