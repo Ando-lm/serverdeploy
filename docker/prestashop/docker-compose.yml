@@ -34,6 +34,6 @@ services:
       DB_USER: root
       DB_PASSWD: P1lluPallu!
       PS_INSTALL_AUTO: 1
-      PS_DOMAIN: ps.actek.ovh
+      #PS_DOMAIN: ps.actek.ovh
     networks:
       - reverse-proxy
