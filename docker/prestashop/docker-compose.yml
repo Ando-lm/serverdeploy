@@ -1,10 +1,6 @@
 version: '3'
 volumes:
-  dbdata:
-    external: true
-
-networks:
-  reverse-proxy:
+  mysqldb_data:
     external: true
 
 services:
@@ -17,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: P1lluPallu!
       MYSQL_DATABASE: prestashop
     volumes:
-      - dbdata:/var/lib/mysql
+      - mysqldb_data:/var/lib/mysql
     networks:
       - reverse-proxy
 
