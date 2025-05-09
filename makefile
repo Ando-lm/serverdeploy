@@ -28,3 +28,5 @@ gotify:
 rdpro:
 	docker create volume rdpro_data
 	$(call docker_rebuild,"rdpro","rdpro/rdpro")
+prestashop:
+	$(call docker_rebuild,"prestashop","prestashop/prestashop")
