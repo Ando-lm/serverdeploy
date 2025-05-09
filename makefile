@@ -26,8 +26,8 @@ gotify:
 	docker volume create igotifyapi_data
 	$(call docker_rebuild,"gotify","docker/gotify")
 rdpro:
-	docker create volume rdpro_data
+	docker volume create rdpro_data
 	$(call docker_rebuild,"rdpro","rdpro/rdpro")
 prestashop:
-	docker create volume mysqldb_data
+	docker volume create mysqldb_data
 	$(call docker_rebuild,"prestashop","docker/prestashop")
