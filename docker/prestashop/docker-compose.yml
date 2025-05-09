@@ -2,7 +2,10 @@ version: '3'
 volumes:
   mysqldb_data:
     external: true
-
+networks:
+  reverse-proxy:
+    external: true
+    
 services:
 
   mysql:
@@ -34,6 +37,3 @@ services:
       PS_DOMAIN: localhost:8080
     networks:
       - reverse-proxy
-networks:
-  reverse-proxy:
-    external: true
