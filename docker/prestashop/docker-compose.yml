@@ -3,7 +3,12 @@ volumes:
   dbdata:
     external: true
 
+networks:
+  reverse-proxy:
+    external: true
+
 services:
+
   mysql:
     container_name: some-mysql
     image: mysql:5.7
@@ -15,6 +20,7 @@ services:
       - dbdata:/var/lib/mysql
     networks:
       - reverse-proxy
+
   prestashop:
     container_name: prestashop
     image: prestashop/prestashop:latest # Latest stable version of the PrestaShop, to see all available images go to ...
