@@ -29,4 +29,5 @@ rdpro:
 	docker create volume rdpro_data
 	$(call docker_rebuild,"rdpro","rdpro/rdpro")
 prestashop:
+	docker create volume dbdata
 	$(call docker_rebuild,"prestashop","docker/prestashop")

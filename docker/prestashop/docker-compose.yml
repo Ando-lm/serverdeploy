@@ -1,4 +1,8 @@
 version: '3'
+volumes:
+  dbdata:
+    external: true
+
 services:
   mysql:
     container_name: some-mysql
@@ -7,6 +11,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: P1lluPallu!
       MYSQL_DATABASE: prestashop
+    volumes:
+      - dbdata:/var/lib/mysql
     networks:
       - reverse-proxy
   prestashop:
@@ -22,6 +28,8 @@ services:
       DB_NAME: prestashop
       DB_USER: root
       DB_PASSWD: P1lluPallu!
+      PS_INSTALL_AUTO: 1
+      PS_DOMAIN: localhost:8080
     networks:
       - reverse-proxy
 networks:
